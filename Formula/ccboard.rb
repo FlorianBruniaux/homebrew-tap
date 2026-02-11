@@ -10,8 +10,9 @@ class Ccboard < Formula
   depends_on "rust" => :build
 
   def install
-    # Install from workspace member 'ccboard'
-    system "cargo", "install", "--path", "ccboard", *std_cargo_args
+    # Build workspace and install binary from ccboard crate
+    system "cargo", "build", "--release", "--locked", "--bin", "ccboard"
+    bin.install "target/release/ccboard"
   end
 
   def caveats
