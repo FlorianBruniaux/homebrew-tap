@@ -10,7 +10,8 @@ class Ccboard < Formula
   depends_on "rust" => :build
 
   def install
-    system "cargo", "install", *std_cargo_args
+    # Install from workspace member 'ccboard'
+    system "cargo", "install", "--path", "ccboard", *std_cargo_args
   end
 
   def caveats
