@@ -11,7 +11,7 @@ class Ccboard < Formula
 
   def install
     # Build workspace and install binary from ccboard crate
-    system "cargo", "build", "--release", "--locked", "--bin", "ccboard"
+    system "cargo", "build", "--release", "--bin", "ccboard"
     bin.install "target/release/ccboard"
   end
 
