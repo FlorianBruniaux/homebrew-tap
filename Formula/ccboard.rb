@@ -1,9 +1,9 @@
 class Ccboard < Formula
   desc "Unified TUI/Web dashboard for Claude Code management"
   homepage "https://github.com/FlorianBruniaux/ccboard"
-  url "https://github.com/FlorianBruniaux/ccboard/archive/refs/tags/v0.9.0.tar.gz"
-  sha256 "35e027d22353cb769ab74d384eeb4657fc9445883d8bf5e53240cd9ac8deeead"
-  version "0.9.0"
+  url "https://github.com/FlorianBruniaux/ccboard/archive/refs/tags/v0.10.0.tar.gz"
+  sha256 "656fd32bf64d40eafc9b8483782f85ea4c912e922e070029d0297117c5a48e9b"
+  version "0.10.0"
   license any_of: ["MIT", "Apache-2.0"]
   head "https://github.com/FlorianBruniaux/ccboard.git", branch: "main"
 
