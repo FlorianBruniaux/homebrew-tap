@@ -1,18 +1,29 @@
 class Ccboard < Formula
   desc "Unified TUI/Web dashboard for Claude Code management"
   homepage "https://github.com/FlorianBruniaux/ccboard"
-  url "https://github.com/FlorianBruniaux/ccboard/archive/refs/tags/v0.11.1.tar.gz"
-  sha256 "49c984c959169c4bc0facc2264bc56d905ac19f99cec899841e699595bd518c0"
-  version "0.11.1"
+  version "0.11.2"
   license any_of: ["MIT", "Apache-2.0"]
-  head "https://github.com/FlorianBruniaux/ccboard.git", branch: "main"
 
-  depends_on "rust" => :build
+  on_macos do
+    on_arm do
+      url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-aarch64.tar.gz"
+      sha256 "dee442fb10c88511b082cd7288d8052eb3790527df417d38a5d5b9a79198bf5e"
+    end
+    on_intel do
+      url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-x86_64.tar.gz"
+      sha256 "db9076f2bea5280c54fa5ed7e3169b015c97390c23307da5f4e8683c2698e6ea"
+    end
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-linux-x86_64.tar.gz"
+      sha256 "7ca8d1a00d7bddf038e20e695d535c80d6c2522dd6bd8cea122649fc1f203f24"
+    end
+  end
 
   def install
-    # Build workspace and install binary from ccboard crate
-    system "cargo", "build", "--release", "--bin", "ccboard"
-    bin.install "target/release/ccboard"
+    bin.install "ccboard"
   end
 
   def caveats
