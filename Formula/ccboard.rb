@@ -1,13 +1,13 @@
 class Ccboard < Formula
   desc "Unified TUI/Web dashboard for Claude Code management"
   homepage "https://github.com/FlorianBruniaux/ccboard"
-  version "0.16.1"
+  version "0.16.2"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
       url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-aarch64.tar.gz"
-      sha256 "0caac2b1e41a8e61d6aa8296684ec558c179be6c916164c3f200aefa05a8f4f4"
+      sha256 "b54b139e0566084a801707915bc18ca7091ba3e57458a462406133abfc2384fb"
     end
     on_intel do
       url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-x86_64.tar.gz"
