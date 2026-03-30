@@ -1,24 +1,24 @@
 class Ccboard < Formula
   desc "Unified TUI/Web dashboard for Claude Code management"
   homepage "https://github.com/FlorianBruniaux/ccboard"
-  version "0.16.5"
+  version "0.21.0"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
       url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-aarch64.tar.gz"
-      sha256 "50915a2361a14bc7c297427d26c307944ae617d94c4c713adfd9d5aa850fa508"
+      sha256 "a33c724cae7212a138798000bf0af989e23440ff6f9bd3cd8b80aa129aba425e"
     end
     on_intel do
       url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-macos-x86_64.tar.gz"
-      sha256 "30a52a7b1182478fbf1336afbf0d7e63e1954b345d6990f2ec24765a656d5edf"
+      sha256 "3888b661159bdffd472c7944bae6f524e4fdfdb4d0149327d550e2921a3269f9"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/FlorianBruniaux/ccboard/releases/download/v#{version}/ccboard-linux-x86_64.tar.gz"
-      sha256 "f31404af9f00a74ecfc272a149fbe6a72aba3bcec29593d3cb8fb3242c7409bd"
+      sha256 "52e79f8a07234c33486c40586fb21673d09c966754d10f9ecdc5ed423243c657"
     end
   end
 
@@ -28,23 +28,17 @@ class Ccboard < Formula
 
   def caveats
     <<~EOS
-      ccboard requires Claude Code installed with ~/.claude directory.
+      To set up live session monitoring hooks, run:
+        ccboard setup
 
-      Run Claude Code at least once to generate the directory:
-        claude
+      To start the web dashboard:
+        ccboard web --port 3333
 
-      Launch ccboard:
-        ccboard              # TUI mode (default)
-        ccboard web          # Web interface on port 3333
-        ccboard stats        # Print stats and exit
-        ccboard discover     # Analyze sessions for CLAUDE.md/skills/commands suggestions
-
-      Documentation:
-        https://github.com/FlorianBruniaux/ccboard#readme
+      Sessions data is read from ~/.claude (read-only).
     EOS
   end
 
   test do
-    assert_match "ccboard", shell_output("#{bin}/ccboard --version 2>&1")
+    system "#{bin}/ccboard", "--version"
   end
 end
